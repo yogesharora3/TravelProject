@@ -1,0 +1,70 @@
+.story {
+  font-size: $default-font-size;
+  box-shadow: 0 3rem 6rem rgba($color-black, 0.1);
+  width: 75%;
+  background-color: $color-grey;
+  margin: 0 auto;
+  padding: 6rem;
+  padding-left: 9rem;
+  background-color: rgba($color-white, 0.6);
+  transform: skewX(-7deg);
+  @include respond(tab-port) {
+    width: 100%;
+    padding: 4rem;
+    padding-left: 7rem;
+  }
+  @include respond(phone) {
+    transform: skewX(0);
+  }
+  &__shape {
+    // background-color: red;
+    width: 15rem;
+    height: 15rem;
+    float: left;
+    // border-radius: 50%;
+    shape-outside: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+    transform: translateX(-2rem) skewX(7deg);
+    transition: all 0.5s;
+    backface-visibility: hidden;
+    position: relative;
+    @include respond(phone) {
+      transform: translateX(-3rem) skewX(0);
+    }
+  }
+  &__text {
+    transform: skewX(7deg);
+    @include respond(phone) {
+      transform: skewX(0);
+    }
+  }
+  &__image {
+    height: 100%;
+    // width: 100%;
+    transform: translateX(-4rem) scale(1.4);
+    transition: all 0.5s;
+    backface-visibility: hidden;
+  }
+  &__caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    color: $color-white;
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    text-align: center;
+    opacity: 0;
+    transition: all 0.5s;
+    backface-visibility: hidden;
+  }
+  &:hover &__caption {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+  &:hover &__image {
+    transform: scale(1) translateX(-4rem);
+    filter: blur(3px) brightness(80%);
+    backface-visibility: hidden;
+  }
+}
